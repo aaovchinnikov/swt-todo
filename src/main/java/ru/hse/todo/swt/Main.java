@@ -1,19 +1,14 @@
 package ru.hse.todo.swt;
 
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
+
+import ru.hse.todo.swt.controls.MainWindow;
 
 public class Main {
 	public static void main(String[] args) {
 		Display display = new Display();
-		Shell shell = new Shell(display); 
-		shell.setText("Snippet 1");
-		shell.open();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) { 
-				display.sleep();
-			}
-		}
-		display.dispose();
+		MainWindow window = new MainWindow(display);
+		window.open();
+		window.runEventDispatching();
 	}
 }
