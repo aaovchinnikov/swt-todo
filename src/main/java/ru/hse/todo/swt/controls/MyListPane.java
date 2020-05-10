@@ -7,30 +7,33 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.FillLayout;
 
-public class MyListPane extends Group {
+public class MyListPane extends Composite {
 
 	public MyListPane(Composite parent, int style) {
 		super(parent, style);
-		setLayout(new RowLayout(SWT.VERTICAL));
+		setLayout(new FillLayout(SWT.HORIZONTAL));
 		
-		ScrolledComposite scrolledComposite = new ScrolledComposite(this, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		Group grpTodos = new Group(this, SWT.NONE);
+		grpTodos.setText("TODOs");
+		grpTodos.setLayout(new FillLayout(SWT.VERTICAL));
+		
+		ScrolledComposite scrolledComposite = new ScrolledComposite(grpTodos, SWT.H_SCROLL | SWT.V_SCROLL);
 		scrolledComposite.setExpandHorizontal(true);
 		scrolledComposite.setExpandVertical(true);
 		
-		List list = new List(scrolledComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		List list = new List(scrolledComposite, SWT.BORDER);
 		scrolledComposite.setContent(list);
 		scrolledComposite.setMinSize(list.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		
-		Composite composite = new Composite(this, SWT.NONE);
-		composite.setLayout(new RowLayout(SWT.HORIZONTAL));
+		Composite composite = new Composite(grpTodos, SWT.NONE);
+		composite.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		Button btnNewButton = new Button(composite, SWT.NONE);
 		btnNewButton.setText("New Button");
 		
 		Button btnNewButton_1 = new Button(composite, SWT.NONE);
 		btnNewButton_1.setText("New Button");
-		// TODO Auto-generated constructor stub
 	}
-
 }

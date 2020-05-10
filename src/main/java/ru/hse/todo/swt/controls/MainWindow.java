@@ -1,6 +1,7 @@
 package ru.hse.todo.swt.controls;
 
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
@@ -18,6 +19,7 @@ public final class MainWindow {
 		this.shell = new Shell(display);
 		this.shell.setSize(width, height);
 		this.shell.setText("TODO list");
+		this.shell.setLayout(new FillLayout());
 	}
 
 	/**
