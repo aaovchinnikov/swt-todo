@@ -27,12 +27,15 @@ mvn clean compile
 ## Run app
 This is Java 11 modularized application, so use Java-modules command-line options.
 
+### Windows
+Set MODULE_PATH to point org.eclipse.swt.win32.win32.x86_64-3.114.0.jar use version 3.114.0.  
+Then use
+
 ```
-java --module-path "target/classes" --module ru.hse.todo.swt/ru.hse.todo.swt.Main
+java --module-path "target/classes;%MODULE_PATH%" --module ru.hse.todo.swt/ru.hse.todo.swt.Main
 ```
 Or in short form
 
 ```
-java -p "target/classes" -m ru.hse.todo.swt/ru.hse.todo.swt.Main
+java -p "target/classes;%MODULE_PATH%" -m ru.hse.todo.swt/ru.hse.todo.swt.Main
 ```
-
