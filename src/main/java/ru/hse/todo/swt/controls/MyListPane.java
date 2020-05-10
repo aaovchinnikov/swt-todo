@@ -1,15 +1,17 @@
 package ru.hse.todo.swt.controls;
 
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Label;
 
-public class MyListPane extends Composite {
+public final class MyListPane extends Composite {
 
 	public MyListPane(Composite parent, int style) {
 		super(parent, style);
@@ -17,23 +19,19 @@ public class MyListPane extends Composite {
 		
 		Group grpTodos = new Group(this, SWT.NONE);
 		grpTodos.setText("TODOs");
-		grpTodos.setLayout(new FillLayout(SWT.VERTICAL));
+		grpTodos.setLayout(new GridLayout(1, false));
 		
-		ScrolledComposite scrolledComposite = new ScrolledComposite(grpTodos, SWT.H_SCROLL | SWT.V_SCROLL);
-		scrolledComposite.setExpandHorizontal(true);
-		scrolledComposite.setExpandVertical(true);
+		List list = new List(grpTodos, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		list.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		
-		List list = new List(scrolledComposite, SWT.BORDER);
-		scrolledComposite.setContent(list);
-		scrolledComposite.setMinSize(list.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		
 		Composite composite = new Composite(grpTodos, SWT.NONE);
 		composite.setLayout(new FillLayout(SWT.HORIZONTAL));
 		
 		Button btnNewButton = new Button(composite, SWT.NONE);
-		btnNewButton.setText("New Button");
+		btnNewButton.setText("Add");
 		
 		Button btnNewButton_1 = new Button(composite, SWT.NONE);
-		btnNewButton_1.setText("New Button");
+		btnNewButton_1.setText("Remove");
 	}
 }

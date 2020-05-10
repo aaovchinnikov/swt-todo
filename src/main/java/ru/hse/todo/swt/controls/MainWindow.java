@@ -1,7 +1,10 @@
 package ru.hse.todo.swt.controls;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
@@ -18,8 +21,13 @@ public final class MainWindow {
 		this.display = display;
 		this.shell = new Shell(display);
 		this.shell.setSize(width, height);
+		this.shell.setMinimumSize(640, 390);
 		this.shell.setText("TODO list");
-		this.shell.setLayout(new FillLayout());
+		this.shell.setLayout(new GridLayout(2, false));
+		Composite lp = new MyListPane(shell, SWT.NONE);
+		lp.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
+		Composite dp = new MyDetailsPane(shell, SWT.NONE);
+		dp.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 	}
 
 	/**
