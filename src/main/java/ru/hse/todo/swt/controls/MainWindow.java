@@ -12,22 +12,27 @@ import org.eclipse.swt.widgets.Shell;
 public final class MainWindow {
 	private final Shell shell;
 	private final Display display;
+	private final ListPane listPane;
+	private final DetailsPane detailsPane;
 
-	public MainWindow(Display display) {
-		this(display, 640, 480);
+	public MainWindow(Display display, ListPane listPane, DetailsPane detailsPane) {
+		this(display, listPane, detailsPane, 640, 480);
 	}
 
-	public MainWindow(Display display, int width, int height) {
+	public MainWindow(Display display, ListPane listPane, DetailsPane detailsPane, int width, int height) {
 		this.display = display;
 		this.shell = new Shell(display);
 		this.shell.setSize(width, height);
 		this.shell.setMinimumSize(640, 390);
 		this.shell.setText("TODO list");
 		this.shell.setLayout(new GridLayout(2, false));
-		Composite lp = new MyListPane(shell, SWT.NONE);
-		lp.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-		Composite dp = new MyDetailsPane(shell, SWT.NONE);
-		dp.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		this.listPane = listPane;
+		this.listPane.setParent(this.shell);
+		this.listPane.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
+		this.detailsPane = detailsPane;
+		this.detailsPane.setParent(this.shell);
+		this.detailsPane.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		this.shell.requestLayout(); // forces new controls to be laid out after their setParent calls 
 	}
 
 	/**
