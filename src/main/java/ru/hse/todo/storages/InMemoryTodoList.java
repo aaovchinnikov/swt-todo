@@ -7,11 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ru.hse.todo.Todo;
-import ru.hse.todo.TodoOrderedStorage;
+import ru.hse.todo.TodoStorage;
 import ru.hse.todo.outputs.SimpleTodoFactoryOutput;
 import ru.hse.todo.todos.SimpleTodo;
 
-public final class InMemoryTodoList implements TodoOrderedStorage {
+public final class InMemoryTodoList implements TodoStorage {
 	private final List<Todo> todos;
 	private final DateTimeFormatter formatter;
 	

@@ -11,7 +11,7 @@ import java.util.List;
  * @implSpec Any uniqness logic of stored objects should be declared explicitly
  *           in implementing code.
  */
-public interface TodoOrderedStorage {
+public interface TodoStorage {
 	/**
 	 * Adds new {@link Todo} to storage.
 	 * 
